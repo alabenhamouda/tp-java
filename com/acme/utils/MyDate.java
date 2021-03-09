@@ -78,4 +78,14 @@ public class MyDate {
                 System.out.println("The year " + i + " is a leap year");
         }
     }
+
+    public boolean equals(Object o) {
+        if (o instanceof MyDate) {
+            MyDate d = (MyDate)o;
+            if ((d.day == day) && (d.month == month) && (d.year == year)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

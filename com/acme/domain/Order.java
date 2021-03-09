@@ -7,7 +7,7 @@ public class Order {
     private MyDate orderDate;
     private double orderAmount = 0.00;
     private String customer;
-    private String product;
+    private Good product;
     private int quantity;
 
     static { taxRate = 0.05; }
@@ -30,9 +30,9 @@ public class Order {
 
     public void setCustomer(String customer) { this.customer = customer; }
 
-    public String getProduct() { return product; }
+    public Good getProduct() { return product; }
 
-    public void setProduct(String product) { this.product = product; }
+    public void setProduct(Good product) { this.product = product; }
 
     public int getQuantity() { return quantity; }
 
@@ -46,7 +46,7 @@ public class Order {
     public static void setTaxRate(double newRate) { taxRate = newRate; }
     public static double getTaxRate() { return taxRate; }
 
-    public Order(MyDate d, double amt, String c, String p, int q) {
+    public Order(MyDate d, double amt, String c, Good p, int q) {
         if (amt <= 0) {
             System.out.println(
                 "Attempting to set the orderAmount to a value less than or equal to zero");
@@ -64,9 +64,9 @@ public class Order {
         quantity = q;
     }
 
-    public Order(MyDate d, double amt, String c) {
-        this(d, amt, c, "Anvil", 1);
-    }
+    // public Order(MyDate d, double amt, String c) {
+    //     this(d, amt, c, new Good("Anvil", 1, 1), 1);
+    // }
 
     public String toString() {
         return quantity + " ea. " + product + " for " + customer;
