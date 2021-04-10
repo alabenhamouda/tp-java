@@ -9,8 +9,23 @@ public class Order {
     private String customer;
     private Product product;
     private int quantity;
+    private static Rushable rushable;
 
     static { taxRate = 0.05; }
+
+    public static Rushable getRushable() { return rushable; }
+
+    public static void setRushable(Rushable rushable) {
+        Order.rushable = rushable;
+    }
+
+    public boolean isPriorityOrder() {
+        boolean priorityOrder = false;
+        if (rushable != null) {
+            priorityOrder = rushable.isRushable(orderDate, orderAmount);
+        }
+        return priorityOrder;
+    }
 
     public MyDate getOrderDate() { return orderDate; }
 
