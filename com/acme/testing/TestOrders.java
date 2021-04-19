@@ -3,6 +3,7 @@ package com.acme.testing;
 import com.acme.domain.*;
 import com.acme.domain.Good.UnitOfMeasureType;
 import com.acme.utils.*;
+import java.time.LocalDate;
 
 public class TestOrders {
 
@@ -21,15 +22,29 @@ public class TestOrders {
                              UnitOfMeasureType.CUBIC_FEET, false, 10, 5, 5);
         Order balloons = new Order(date2, 1000.00, "Bugs Bunny", s2, 125);
 
+        MyDate hammerDate = new MyDate(5, 4, 2021);
+        Solid hammerType =
+            new Solid("Acme Hammer", 281, 0.3, UnitOfMeasureType.CUBIC_METER,
+                      false, 100, 0.25, 0.3);
+        Order hammer =
+            new Order(hammerDate, 10.00, "Wile E Coyote", hammerType, 10);
+
         System.out.println(anvil);
         System.out.println(balloons);
+        System.out.println(hammer);
 
-        Order.setRushable(
-            (MyDate orderDate, double amount) -> { return amount > 1500; });
+        Order.setRushable((MyDate orderDate, double amount) -> {
+            LocalDate afterMonth = (LocalDate.now()).minusMonths(1);
+            LocalDate order = LocalDate.of(
+                orderDate.getYear(), orderDate.getMonth(), orderDate.getDay());
+            return afterMonth.equals(order) || afterMonth.isAfter(order);
+        });
 
         System.out.println("Anvil isPriorityOrder: " + anvil.isPriorityOrder());
         System.out.println("Balloons isPriorityOrder: " +
                            balloons.isPriorityOrder());
+        System.out.println("Hammer isPriorityOrder: " +
+                           hammer.isPriorityOrder());
 
         // System.out.println("The volume of the anvil is:  " +
         //                    ((Good)anvil.getProduct()).volume());
