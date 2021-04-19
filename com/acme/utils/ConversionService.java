@@ -4,7 +4,7 @@ public class ConversionService {
     /**
      * weight conversion rates
      */
-// conversion rate for 1 kilogram to pounds
+    // conversion rate for 1 kilogram to pounds
     public static double kilogramToPounds = 2.2046;
     // conversion rate for 1 kilogram to grams
     public static int kilogramToGrams = 1000;
@@ -13,7 +13,7 @@ public class ConversionService {
     /**
      * volume conversion rates
      */
-// conversion rate for 1 liter to fluid ounces
+    // conversion rate for 1 liter to fluid ounces
     public static float literToFluidOunce = 33.814f;
     // conversion rate for 1 liter to gallons
     public static float literToGallon = 0.2642f;
@@ -38,15 +38,20 @@ public class ConversionService {
         return liters * literToFluidOunce;
     }
 
-    public static float gallons(float liters) {
-        return liters * literToGallon;
-    }
+    public static float gallons(float liters) { return liters * literToGallon; }
 
-    public static float pints(float liters) {
-        return liters * literToPints;
-    }
+    public static float pints(float liters) { return liters * literToPints; }
 
     public static int milliliters(int liters) {
         return liters * litertoMilliliters;
+    }
+
+    public static double[][] allKgToPounds(double... kg) {
+        double[][] ret = new double[kg.length][2];
+        for (int i = 0; i < kg.length; i++) {
+            ret[i][0] = kg[i];
+            ret[i][1] = pounds(kg[i]);
+        }
+        return ret;
     }
 }

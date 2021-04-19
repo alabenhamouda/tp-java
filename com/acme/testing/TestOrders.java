@@ -17,7 +17,7 @@ public class TestOrders {
                       false, 500, 0.25, 0.3);
         Order anvil = new Order(date1, 2000.00, "Wile E Coyote", s1, 10);
 
-        MyDate date2 = new MyDate(4, 10, 2008);
+        MyDate date2 = new MyDate(1, 1, 2016);
         Solid s2 = new Solid("Acme Balloon", 1401, 15,
                              UnitOfMeasureType.CUBIC_FEET, false, 10, 5, 5);
         Order balloons = new Order(date2, 1000.00, "Bugs Bunny", s2, 125);
@@ -59,9 +59,9 @@ public class TestOrders {
         // Order.getTaxRate()); Order.computeTaxOn(3000.00); anvil.computeTax();
         // balloons.computeTax();
         // // System.out.println("bonus:");
-        // // MyDate date3 = new MyDate(5, 20, 2008);
-        // // Order anotherAnvil = new Order(date3, 200, "Road Runner");
-        // // System.out.println(anotherAnvil);
+        // MyDate date3 = new MyDate(5, 20, 2008);
+        // Order anotherAnvil = new Order(date3, 200, "Road Runner");
+        // System.out.println(anotherAnvil);
 
         // System.out.println("The total bill for: " + anvil + " is " +
         //                    anvil.computeTotal());

@@ -4,6 +4,17 @@ public class MyDate {
     private int day;
     private int year;
     private int month;
+    private static MyDate[] holidays;
+
+    static {
+        holidays = new MyDate[6];
+        holidays[0] = new MyDate(1, 1, 2016);
+        holidays[1] = new MyDate(9, 5, 2016);
+        holidays[2] = new MyDate(5, 30, 2016);
+        holidays[3] = new MyDate(10, 24, 2016);
+        holidays[4] = new MyDate(7, 4, 2016);
+        holidays[5] = new MyDate(12, 25, 2016);
+    }
 
     public MyDate() { this(1, 1, 1900); }
 
@@ -12,6 +23,15 @@ public class MyDate {
             month = m;
             day = d;
             year = y;
+        }
+    }
+
+    public static MyDate[] getHolidays() { return holidays; }
+
+    public static void listHolidays() {
+        System.out.println("the holidays are:");
+        for (var holiday : holidays) {
+            System.out.println(holiday);
         }
     }
 
