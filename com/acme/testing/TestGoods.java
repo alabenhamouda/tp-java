@@ -4,6 +4,7 @@ import com.acme.domain.Good;
 import com.acme.domain.Good.UnitOfMeasureType;
 import com.acme.domain.Liquid;
 import com.acme.domain.Solid;
+import java.util.*;
 
 public class TestGoods {
 
@@ -35,5 +36,17 @@ public class TestGoods {
                            anvil.canShipViaPostOffice());
         System.out.println(paint + " can ship via Post office?" +
                            paint.canShipViaPostOffice());
+
+        System.out.println(Good.getCatalog());
+        Good.getCatalog().remove(1);
+        Solid toaster =
+            new Solid("Acme Toaster", 1755, 0.75, UnitOfMeasureType.CUBIC_FEET,
+                      false, 1.0, 1.0, 1.0);
+        Good.getCatalog().add(toaster);
+        Good.getCatalog().add(toaster);
+        System.out.println(Good.getCatalog());
+        System.out.println("Flammable products: " + Good.flammablesList());
+        Collections.sort((List<Good>)Good.getCatalog());
+        System.out.println(Good.getCatalog());
     }
 }
